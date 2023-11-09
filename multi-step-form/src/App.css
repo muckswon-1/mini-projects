@@ -1,0 +1,8 @@
+.App {
+    width: 50%;
+    height: 50%;
+    background: var(--white);
+    border-radius: 1rem;
+    padding: .5rem;
+
+}

@@ -1,0 +1,158 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Righteous&family=Ubuntu+Mono&display=swap');
+:root {
+    --blue: rgb(14,52,160);
+    --yellow:rgb(239,202,8);
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: var(--blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    font-family: 'Ubuntu Mono', monospace;
+    
+   
+    
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+h1 {
+    font-size: 5rem;
+    color:#ffb17a;
+    
+}
+
+.quote {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background: rgba(14,52,160,0.1);
+    box-shadow: 0px 0px 0px 1px #F2F3F4;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.quote:after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    
+  }
+
+  .quote .quote-text {
+    font-size: 2rem;
+    letter-spacing: 0.2ch;
+    font-family: 'Righteous', cursive;
+    text-align: justify;
+    color: white;
+    animation: fadein 1s ease-in 0.1s;
+
+  }
+
+  .quote .author {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #ffb17a;
+    animation: fadein 1s ease-in 0.1s;
+  }
+
+
+  .btn {
+    background-color: var(--yellow);
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    border: 0;
+    color: var(--blue);
+    padding: 10px;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out 0.1s;
+    align-self: flex-end;
+  }
+
+  .btn:hover{
+    color: white;
+    background: #ffb17a;
+  }
+  .btn:active {
+    background: red;
+
+  }
+
+  @media (max-width: 768px){
+    .container {
+        width: 70%;
+    }
+  }
+  @media (max-width: 576px){
+    body {
+       
+    }
+    .container {
+        width: 100%;
+        
+    }
+
+    .quote {
+        padding: 10px;
+        letter-spacing: 0.1ch;
+        margin: 0 30px;
+        border-radius: 0;
+        border: 1px solid white;
+        box-shadow: none;
+    }
+  }
+
+ 
+
+  /* Animations */
+  @keyframes fadein {
+    0% {
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeout {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }

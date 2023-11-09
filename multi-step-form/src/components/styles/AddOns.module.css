@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.addOns {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+.addOnContainer {
+    display: flex;
+    gap: .5rem;
+    border: 1px solid var(--coolGray);
+    padding: .5rem;
+    border-radius: .5rem;
+    align-items: center;
+
+}
+
+.addOnContainer label {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.addOnContainer input {
+    cursor: pointer;
+}
+
+.addOnPrice {
+    color: var(--purplishBlue);
+     transform: translateX(80px);
+}
+
+.addOnTitle {
+    color: var(--marineBlue);
+    font-weight: 500;
+}
+.addOnDescription {
+    font-size: .7rem;
+    color: var(--coolGray);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+}

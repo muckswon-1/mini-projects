@@ -1,0 +1,21 @@
+[submodule "won_todo_app"]
+	path = won_todo_app
+	url = ./won_todo_app/
+[submodule "clean_movers"]
+	path = clean_movers
+	url = https://github.com/muckswon-1/clean_movers.git
+[submodule "multi-step-form"]
+	path = multi-step-form
+	url = https://github.com/muckswon-1/multi-step-form.git
+[submodule "snackit"]
+	path = snackit
+	url = https://github.com/muckswon-1/snackit.git
+[submodule "rest-countriesv2"]
+	path = rest-countriesv2
+	url = https://github.com/muckswon-1/rest-countriesv2.git
+[submodule "jammming"]
+	path = jammming
+	url = https://github.com/muckswon-1/jammming.git
+[submodule "messageGenerator"]
+	path = messageGenerator
+	url = https://github.com/muckswon-1/messageGenerator.git

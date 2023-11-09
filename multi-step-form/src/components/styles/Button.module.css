@@ -1,0 +1,39 @@
+.button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: .2rem;
+}
+
+.nextButton {
+    background: var(--marineBlue);
+    color: var(--white);
+    padding: .5rem;
+    font-weight: 600;
+    transition:  all .2s ease-in-out;
+
+    
+}
+
+.nextButton:hover {
+    background: rgba(2,41,90,.9);
+}
+
+.backButton {
+    background: none;
+    color: var(--coolGray);
+    font-weight: 700;
+    transition: .2s ease-in-out;
+    
+}
+.backButton:hover {
+    color: var(--marineBlue);
+}
+
+.confirmButton {
+    background: var(--purplishBlue);
+    color: var(--white);
+    padding: .5rem;
+    font-weight: 600;
+    transition:  all .2s ease-in-out;
+}

@@ -1,0 +1,251 @@
+#root {
+  width: 100vw;
+  height: 100vh;
+
+  font-family: "Noto Sans JP", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--text-color);
+  background-color: var(--primary-color);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+header {
+  width: 100%;
+  height: 20%;
+  text-align: center;
+  padding: 1rem;
+}
+
+header h1 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+header p {
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+}
+
+.open {
+  display: flex;
+}
+
+main {
+  width: 100%;
+  height: 75%;
+  display: flex;
+  overflow: scroll;
+}
+
+.hide_task_list {
+  justify-content: center;
+  align-items: center;
+  background: var(--secondary-background);
+}
+.show_task_list {
+  background: inherit;
+}
+
+.task_list {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.newTaskForm {
+  width: 40%;
+  height: 400px;
+  background: var(--primary-color);
+  flex-direction: column;
+  border: 1px solid var(--secondary-color);
+  border-radius: 1rem;
+  padding: 0 1rem 0 1rem;
+  justify-content: space-evenly;
+}
+
+.newTaskForm input,
+.newTaskForm textarea {
+  background: none;
+  outline: none;
+  border: inherit;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  color: var(--text-color);
+}
+
+button {
+  background: none;
+  outline: none;
+  border: 1px solid var(--secondary-color);
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  color: var(--text-color);
+}
+
+button:hover {
+  cursor: pointer;
+  background: var(--text-color);
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.all_completed_btn_div {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.submit_close_btns_div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.existing_task_form {
+  width: 40%;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--secondary-color);
+  border-radius: 1rem;
+}
+
+.existing_task_form_pending {
+  background: var(--primary-color);
+}
+
+.existing_task_form_completed {
+  background: var(--secondary-background);
+}
+
+.task_header {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.existing_task_form input {
+  width: 80%;
+  height: 100%;
+  border: 0;
+  outline: none;
+  border-radius: 1rem 1rem 0 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-color);
+  background: none;
+  padding-left: 1rem;
+}
+
+.existing_task_form textarea {
+  width: 100%;
+  height: 70%;
+  padding: 1rem;
+  outline: none;
+  border: none;
+  color: var(--secondary-color);
+  background: none;
+}
+
+.existing_task_form_edit {
+  width: 40%;
+  height: 200px;
+  background: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--secondary-color);
+  border-radius: 1rem;
+  padding: 0 1rem 0 1rem;
+  justify-content: space-evenly;
+}
+
+.existing_task_form_edit input,
+.existing_task_form_edit textarea {
+  background: none;
+  outline: none;
+  border: inherit;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  color: var(--text-color);
+}
+
+.check_btn_div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.check_btn_div .completed {
+  width: 20px;
+  height: 20px;
+  margin-left: 0.5rem;
+  border-radius: 0;
+  font-size: initial;
+  font-weight: 0;
+  color: var(--text-color);
+  padding-left: initial;
+}
+
+.edit {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  align-self: flex-end;
+}
+
+.delete {
+  margin: 0.5rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  height: 5%;
+  padding: 1rem;
+}
+footer p {
+  text-align: center;
+  color: var(--secondary-color);
+}
+
+@media screen and (max-width: 320px) {
+  #root {
+    min-height: 100vh;
+    height: auto;
+    overflow: unset;
+  }
+  .task_list {
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+
+  .newTaskForm,
+  .existing_task_form {
+    width: 100%;
+    border-radius: 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #root {
+    font-size: 16px; /* Adjust the font size as needed for smaller screens */
+    padding: 1rem; /* Adjust spacing if needed */
+  }
+}
+
+.close {
+  display: none;
+}

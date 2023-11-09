@@ -1,0 +1,55 @@
+.container {
+    width: 100%;
+    padding: 4rem;
+}
+
+button {
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    padding:.5rem 1rem;
+    border-radius: .3rem;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    gap:.3rem;
+    /* box-shadow: 0 0 10px 0px var(--DarkGray); */
+}
+
+
+
+.details {
+    width: 100%;
+    display: flex;
+    
+    gap: 8rem;
+    padding-top: 4rem;
+}
+
+img {
+    flex: 1;
+}
+
+.specificsContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.specifics {
+    display: flex;
+    gap: 4rem;
+}
+
+.specifics1,.specifics2 {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.borderCountry{
+    padding: .1rem .5rem;
+    border-radius: .2rem;
+    /* box-shadow: 0 0 10px 0px var(--DarkGray); */
+}

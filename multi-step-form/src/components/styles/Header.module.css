@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.container h1 {
+    color: var(--marineBlue);
+}
+.container p {
+    color: var(--coolGray);
+}

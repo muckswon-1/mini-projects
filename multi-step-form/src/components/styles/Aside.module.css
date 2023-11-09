@@ -1,0 +1,53 @@
+.container {
+    flex: 1;
+    background-image: url('../../assets/images/bg-sidebar-desktop.svg');
+    background-position: center;
+    background-size: cover;
+    border-radius: 1rem;
+    padding: 2rem 0 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+}
+
+.stepContainer {
+    display:  flex;
+    gap: 1rem;
+}
+
+
+.stepCircle {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius:50%;
+    border: 1px solid var(--white);
+    color: var(--white);
+    
+}
+
+.stepCircleCurrent {
+    background: var(--lightBlue);
+    color: var(--marineBlue);
+}
+
+
+
+
+.stepDetails {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+.stepNumber {
+    color: var(--pastelBlue);
+}
+
+.stepDescription {
+    color:  var(--white);
+    font-family: 500;
+}

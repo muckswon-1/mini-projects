@@ -1,0 +1,401 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+:root {
+    --logo-color: #F72585;
+    --nav-background-color: #3A0CA3;
+    --white-color: #ffffff;
+    --yellow: #e0ff4f;
+    --black: #000000;
+}
+
+/* Reset  */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    all: unset;
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    width: 100vw;
+    height: 100vh;
+   
+}
+
+/* Nav Desktop */
+nav {
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    background-color: var(--nav-background-color);
+    position: fixed;
+    z-index: 1;
+}
+
+.logo {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--logo-color);
+    line-height: 2ch;
+    flex: 1;
+}
+ .logo-2 {
+    font-style: italic;
+}
+
+ ul {
+    flex: 2;
+    display: flex;
+    font-size: 2rem;
+    justify-content: space-between;
+    color: var(--white-color);
+}
+nav ul li a {
+    transition: all;
+}
+
+nav ul li a:hover {
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--yellow);
+    transition: all 0.2s ease-in-out 0.1s;
+}
+
+.mobile {
+    display: none;
+}
+
+/* Nav tablet */
+
+@media screen and (max-width: 768px){
+    nav {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav ul {
+        width: 100%;
+        margin: 0 20px;
+    }
+}
+
+/* Nav Phone */
+@media screen and (max-width: 560px){
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+     
+        display: flex;
+
+        gap: 10px; 
+    }
+
+    .mobile ul {
+        justify-content: space-evenly;
+    }
+    
+
+   .mobile ul  li i {
+
+    font-size: 2rem;
+   }
+
+}
+
+
+/* Mission */
+main {
+    position: absolute;
+    top: 12%;
+}
+
+.mission-section {
+    width: 100%;
+    background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,34)),
+               url('./images/mission-background.jpg');
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+}
+
+.mission-section .mission {
+    width: 60%;
+    padding: 20px;
+    color: #ffffff;
+    font-size: 2rem;
+}
+
+.mission-section .mission h1 {
+    margin: 20px 0;
+    text-align: center;
+    color: var(--yellow);
+    font-size: 2.5rem;
+}
+
+.mission-section .mission p {
+    letter-spacing: 0.5ch;
+    line-height: 3ch;
+    text-align: center;
+    
+    
+}
+.mission-section .mission p::first-letter {
+    font-size: 4rem;
+    
+}
+
+.company-name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--logo-color);
+}
+
+/* Misson tablet */
+@media screen and (max-width: 768px){
+    main {
+        top: 17%;
+    }
+    .mission-section .mission  {
+        width: 100%;
+    
+    }
+
+    
+    .mission-section .mission p {
+      letter-spacing: 0.3ch;
+      line-height: 2ch;
+      
+    }
+}
+
+@media screen and (max-width: 460px) {
+    main {
+        top: 25%;
+    }
+
+    mission-section .mission p {
+        letter-spacing: 0.2ch;
+        
+      }
+}
+
+.snack-section {
+    background: var(--black);
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+}
+
+.snack-section h2 {
+    color: var(--yellow);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+
+}
+
+.snacks {
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-evenly;
+}
+
+.snack {
+    width: 500px;
+    height: 500px;
+    background: var(--white-color);
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+   
+    
+}
+
+.image-container {
+    width: 100%;
+    height: 70%;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.snack .description {
+    height: 30%;
+    width: 100%;
+    background: var(--nav-background-color);
+    border-radius: 0 0 10px 10px;
+    padding: 20px;
+}
+
+.snack .description h4 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: var(--logo-color);
+}
+
+.snack .description p {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--white-color);
+}
+.snack .description  .price {
+    width: 100%;
+    text-align: right;
+    color: var(--yellow);
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+@media screen and (max-width: 460px){
+    .snack {
+        width: 100%;
+        
+        
+    }
+
+    .snack .image-container {
+        height: 60%;
+    }
+    .snack .description {
+        padding: 20px 10px 0 10px;
+        height: 40%;
+        
+    }
+   
+    .snack .description  .price {
+        margin-top: 20px;
+        
+    }
+    
+}
+
+.team {
+    width: 100%;
+    background: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,34,0.5));
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.team h2 {
+    color: var(--yellow);
+    font-size: 1.5rem;
+    text-align: center;
+    
+}
+
+.team .members {
+    align-self: center;
+    width: 60%;
+    height: 400px;
+    display: flex;
+   
+}
+
+
+.team .members .member {
+    width: 33.34%;
+    height: 100%;
+    position: relative;
+}
+
+.team .members .member .member-photo-image-container {
+    width: 100%;
+    height: 100%;
+}
+
+.team .members .member .member-photo-image-container img  {
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.6);
+}
+
+
+
+.team .members .member .member-info {
+    color: var(--white-color);
+    padding-left: 20px;
+    position: absolute;
+    top: 60%;
+}
+
+.member-info  h4 {
+    font-size: 1.5rem;
+}
+
+.hr  hr {
+    width: 100px;
+    background: var(--white-color);
+    height: 5px;
+    margin: 5px;
+} 
+
+footer {
+   width: 100%;
+   background: var(--black);
+   margin-bottom: 0;
+   padding: 20px;
+}
+
+footer p {
+    color: var(--logo-color);
+    text-align: center;
+    font-size: 1rem;
+    
+}
+
+@media screen and (max-width: 768px) {
+    
+    .team .members {
+        width: 100%; 
+    }
+}
+
+@media screen and (max-width: 560px){
+    
+    .team .members{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .team .members .member  {
+        width: 100%;
+        height: 400px;
+        
+    }
+
+    footer  {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+   
+}
+
+@media screen and (max-width: 460px){
+    main {
+        top: 18%;
+    }
+}
