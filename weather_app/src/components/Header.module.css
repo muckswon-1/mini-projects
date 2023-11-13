@@ -1,0 +1,42 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+  padding: 6.25rem 0 6.25rem 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.header p {
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media screen and (max-width: 576px) {
+  .header p {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header p {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .header p {
+    text-align: center;
+  }
+}
