@@ -41,7 +41,7 @@ const WeatherComponent = ({ latitude, longitude }) => {
   const [lastFetchTimestamp, setLastFetchTimestamp] = useState(0);
 
   useEffect(() => {
-    const API_KEY = "28fe2330d3ea7b33536c68b33bf6274e";
+    const API_KEY = import.meta.env.VITE_API_KEY;
     const URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}`;
 
     const shouldFetch = Date.now() - lastFetchTimestamp > 60 * 60 * 1000;
