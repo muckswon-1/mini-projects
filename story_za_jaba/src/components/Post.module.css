@@ -1,0 +1,78 @@
+.container {
+    width: 50%;
+}
+
+.header {
+    display: flex;
+    padding: 0.65rem;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.3125rem 0.3125rem 0 0;
+    background: var(--secondary-color);
+}
+
+.header p {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    padding: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    background: var(--dark-secondary-color);
+}
+
+
+.read_btn {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0 1rem 0;
+    background: var(--text-color);
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+
+}
+
+.read_btn:hover {
+    font-size: 1.5rem;
+    padding: .5rem 0 .5rem 0;
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.post_meta {
+    display: flex;
+    gap: 3rem;
+    padding: 0.3125rem;
+    align-items: center;
+}
+
+.like_dislike {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+}
+
+
+.post_meta button {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.15625rem;
+    cursor: pointer;
+}
