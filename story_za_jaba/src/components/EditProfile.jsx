@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React, {  useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUser, updateProfile } from '../features/profile/profileSlice';
 import { useNavigate } from 'react-router-dom';
 import { editUser } from '../features/users/usersSlice';
+import { editPostUsername } from '../features/posts/postsSlice';
 
 function EditProfileForm() {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
-  
+
+
 
   const [editedProfile, setEditedProfile] = useState({
     username: currentUser.username || '',
@@ -39,16 +41,23 @@ function EditProfileForm() {
     }
   };
 
+
+
+
   const handleSaveChanges = () => {
     // Dispatch an action to update the user's profile
     editedProfile.id = currentUser.id;
-    dispatch(updateProfile(editedProfile));
-    dispatch(editUser(editedProfile))
-    navigate('/');
+    const editProfileAction = dispatch(updateProfile(editedProfile));
+    const editUserAction = dispatch(editUser(editedProfile));
+    const editedPostUsernameAction = dispatch(editPostUsername(editedProfile));
 
-    // Add logic to update the user's profile in your data store or API
+    Promise.all([editProfileAction, editUserAction, editedPostUsernameAction]).then(() => {
+      navigate('/');
+    }).catch((e) => {
+      console.error(e)
+    })
+    
 
-    // Close the edit form or navigate to another page if needed
   };
 
   return (

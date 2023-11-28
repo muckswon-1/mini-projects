@@ -77,6 +77,7 @@ function Register({users}) {
       password : formData.password,
       profilePic : null,
       following : [],
+      followers : []
     }
 
     

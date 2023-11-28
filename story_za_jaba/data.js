@@ -1,5 +1,6 @@
 import {v4 as uuidv4} from 'uuid';
 import { formatTimestamp } from './src/utils/utils';
+const PASSWORD = import.meta.env.VITE_PASSWORD
 
 export const POSTS = [
     {
@@ -23,10 +24,22 @@ const admin =  {
         id : 1,
         username : 'muckswon',
         email : 'muckswon@gmail.com',
-        password : 'Adn$3202',
+        password : PASSWORD,
         profilePic : null,
-        following : ['muckswon2']
+        followers : [],
+        following : [],
+        
     }
+
+const admin2 = {
+         id : 2,
+        username : 'muckswon2',
+        email : 'muckswon2@gmail.com',
+        password : PASSWORD,
+        profilePic : null,
+        followers : [],
+        following : [],
+}
 
 
 
@@ -34,6 +47,6 @@ const admin =  {
 
 export const USERS = [
 
-    admin,
+    admin, admin2
 
 ]

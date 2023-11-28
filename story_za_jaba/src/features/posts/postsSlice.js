@@ -101,13 +101,21 @@ export const postsSlice = createSlice({
             }
 
         },
-        editPost : (state,action) => {
-            
+        editPostUsername : (state,action)=>{
+
+            const user = action.payload
+
+             state.posts.forEach((post) => {
+                    if(post.userId === user.id){
+                        post.username = user.username
+                    }
+                })
+
         }
     }
 })
 
-export const {addPost, likePost, dislikePost, commentOnPost} = postsSlice.actions;
+export const {addPost, likePost, dislikePost, commentOnPost, editPostUsername} = postsSlice.actions;
 export const selectPosts = state => state.posts.posts;
 
 export default postsSlice.reducer;
