@@ -111,11 +111,35 @@ export const postsSlice = createSlice({
                     }
                 })
 
+        },
+        deletePost : (state,action) => {
+            const postToDeleteId = action.payload;
+            console.log(postToDeleteId);
+            state.posts = state.posts.filter((aPost) => aPost.id !== postToDeleteId);
+
+        },
+        addReplyOnComment : (state,action) => {
+            const {comment} = action.payload;
+            const commentedPostIndex = state.posts.findIndex((aPost) => aPost.id = comment.postId);
+            
+
+            if(commentedPostIndex !== -1){
+                const updatedPosts = [...state.posts];
+                const foundPost = updatedPosts[commentedPostIndex];
+                const repliedCommentIndex = foundPost.comments.findIndex((aComment) => aComment.id === comment.id);
+
+                if(repliedCommentIndex !== -1){
+                    const updatedComments = [...foundPost.comments];
+
+                    updatedComments[repliedCommentIndex].push(comment);
+                }
+            }
+            
         }
     }
 })
 
-export const {addPost, likePost, dislikePost, commentOnPost, editPostUsername} = postsSlice.actions;
+export const {addPost, likePost, dislikePost, commentOnPost, editPostUsername, deletePost, addReplyOnComment} = postsSlice.actions;
 export const selectPosts = state => state.posts.posts;
 
 export default postsSlice.reducer;

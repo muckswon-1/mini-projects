@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUser, updateProfile } from '../features/profile/profileSlice';
 import { useNavigate } from 'react-router-dom';
@@ -9,13 +9,16 @@ function EditProfileForm() {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const navigate = useNavigate();
+  const [user, setUser] = useState(currentUser);
+  
+
 
 
 
   const [editedProfile, setEditedProfile] = useState({
-    username: currentUser.username || '',
-    email: currentUser.email || '',
-    profilePic: currentUser.profilePic || '',
+    username: user.username || '',
+    email: user.email || '',
+    profilePic: user.profilePic || '',
 
   });
 
@@ -46,7 +49,7 @@ function EditProfileForm() {
 
   const handleSaveChanges = () => {
     // Dispatch an action to update the user's profile
-    editedProfile.id = currentUser.id;
+    editedProfile.id = user.id;
     const editProfileAction = dispatch(updateProfile(editedProfile));
     const editUserAction = dispatch(editUser(editedProfile));
     const editedPostUsernameAction = dispatch(editPostUsername(editedProfile));
@@ -59,6 +62,13 @@ function EditProfileForm() {
     
 
   };
+
+
+  useEffect(() => {
+
+    setUser(currentUser);
+
+  },[currentUser, dispatch])
 
   return (
     <div className="w-6/12 mx-auto w-full bg-white p-4 rounded-md shadow-md mb-4 mt-48 z-10">

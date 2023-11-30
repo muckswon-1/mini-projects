@@ -1,17 +1,18 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { selectCurrentUser, signOut } from '../features/profile/profileSlice'
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector} from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom';
 import defaultProfilePic from '../assets/default-profile.jpg'
+import {  selectCurrentUser, signOut } from '../features/profile/profileSlice';
 
-function ProfileImage() {
-    const currentUser = useSelector(selectCurrentUser);
+function ProfileImage({user}) {
 
-
-    const image = currentUser &&  currentUser.profilePic ? currentUser.profilePic : defaultProfilePic;
-
+  
+    
+    
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [image, setImage] = useState();
+    const currentUser = useSelector(selectCurrentUser);
 
     const handleLogoutClick = () => {
       const confirmLogout = window.confirm('Are you sure you want to logout')
@@ -23,7 +24,14 @@ function ProfileImage() {
       }
     }
 
-  
+    useEffect(() => {
+      if(user){
+        setImage(user.profilePic)
+      }
+    },[image, user])
+
+   
+ 
    
 
   return (
@@ -32,9 +40,11 @@ function ProfileImage() {
         <img src={image} alt="profile pic" className="object-cover w-full h-full" />
       </div>
      {
-      currentUser ? (
-         <Link to={`profile/${currentUser.username}`} className="text-white-800 font-bold hover:underline">{currentUser.username}</Link>
-      ) : ''
+        
+       currentUser && (
+          <Link to={`profile/${currentUser.username}`} className="text-white-800 font-bold hover:underline">{currentUser.username}</Link> 
+       )
+      
      }
       <button onClick={handleLogoutClick} className="mt-2 text-red-500 hover:underline">
         Logout

@@ -1,9 +1,9 @@
 import React from 'react';
 
-function FollowButton({ isFollowing, onClick }) {
+function FollowButton({ isFollowing, onToggleFollow }) {
   return (
     <button
-      onClick={onClick}
+      onClick={onToggleFollow}
       className={`px-4 py-1 rounded-md ${
         isFollowing
           ? 'bg-red-500 text-white hover:bg-red-700'

@@ -97,4 +97,14 @@ export const findUserById = (users, userId) => {
 }
 
 
+export const sendNotifiction = (message) => {
+  if(!("Notification" in  window)){
+    alert("This browser does not supprt desktop notifications. ")
+  }else if(Notification.permission === "granted"){
+    const notification =  new  Notification(message);
+    
+  }
+}
+
+
 

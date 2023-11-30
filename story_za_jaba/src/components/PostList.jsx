@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Post from './Post'
 
-function PostList({ posts }) {
+function PostList({ posts, showDeleteOption }) {
   const [openPostId, setOpenPostId] = useState(null);
 
   const handleToggleRead = (postId) => {
@@ -14,7 +14,7 @@ function PostList({ posts }) {
         posts.map((post) => (
           <div key={post.id}  className="mb-6 w-full md:w-3/4 lg:w-1/2">
             <Post
-             
+              showDeleteOption={showDeleteOption}
               post={post}
               isOpen={openPostId === post.id}
               onToggleRead={handleToggleRead}

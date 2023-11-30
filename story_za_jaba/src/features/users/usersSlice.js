@@ -35,63 +35,73 @@ import { USERS } from "../../../data";
 
             const {userToFollow, followingUser} = action.payload;
 
-            // const userToFollowIndex = state.users.findIndex((aUser) => {
-            //      return aUser.username === action.payload.userToFollow;
-            // });
+            console.log(userToFollow, followingUser);
+            
 
-            // const userFollowingIndex = state.users.findIndex((aUser) => {
-            //     return aUser.username === action.payload.userFollowing;
-            // })
+            const userToFollowIndex = state.users.findIndex((aUser) => {
+                 return aUser.username === userToFollow;
+            });
 
-            // console.log(userFollowingIndex);
+            console.log(userToFollowIndex);
 
-            // if(userToFollowIndex !== -1 && userFollowingIndex !== -1){
-            //      const updatedUsers = [...state.users];
+            const userFollowingIndex = state.users.findIndex((aUser) => {
+                return aUser.username === followingUser;
+            })
 
-            //      const alreadyFollowing = updatedUsers[userToFollowIndex].followers.includes(action.payload.userFollowing);
+             console.log(userFollowingIndex);
 
-            //      if(!alreadyFollowing){
+            if(userToFollowIndex !== -1 && userFollowingIndex !== -1){
+                 const updatedUsers = [...state.users];
+
+                 const alreadyFollowing = updatedUsers[userToFollowIndex].followers.includes(followingUser);
+
+                 if(!alreadyFollowing){
                       
-            //      updatedUsers[userToFollowIndex].followers.push(action.payload.userFollowing);
-            //      updatedUsers[userFollowingIndex].following.push(action.payload.userToFollow);
+                 updatedUsers[userToFollowIndex].followers.push(followingUser);
+                 updatedUsers[userFollowingIndex].following.push(userToFollow);
                  
-            //      }
+                 }
                
 
-            //      state.users = updatedUsers;
-            //}
+                 state.users = updatedUsers;
+            }
    
         },
         unFollowUser : (state, action) => {
             const {userToUnfollow,unFollowingUser} = action.payload;
 
-            console.log(userToUnfollow ,unFollowingUser);
+    
 
-    //         const userToUnfollowIndex = state.users.findIndex((aUser) => {
-    //             return aUser.username === userToUnfollow;
-    //         });
+            const userToUnfollowIndex = state.users.findIndex((aUser) => {
+                return aUser.username === userToUnfollow;
+            });
 
-    //         const unFollowingUserIndex = state.users.findIndex((aUser) => {
-    //             return aUser.username === unFollowingUser;
-    //         });
+            const unFollowingUserIndex = state.users.findIndex((aUser) => {
+                return aUser.username === unFollowingUser;
+            });
+
+       
 
 
-    //         if(unFollowingUserIndex !== -1 && userToUnfollowIndex !== -1){
-    //             const updatedUsers = [...state.users];
+            if(unFollowingUserIndex !== -1 && userToUnfollowIndex !== -1){
+                const updatedUsers = [...state.users];
 
-    //             const userToUnfollowFollowers = updatedUsers[userToUnfollowIndex].followers.filter((follower) => {
-    //                 return follower !== updatedUsers[userToUnfollowIndex].username;
-    //             })
+                const userToUnfollowFollowers = updatedUsers[userToUnfollowIndex].followers.filter((follower) => {
+                    return follower !== updatedUsers[unFollowingUserIndex].username;
+                })
 
-    //            updatedUsers[userToUnfollowIndex].followers = userToUnfollowFollowers;
+               updatedUsers[userToUnfollowIndex].followers = userToUnfollowFollowers;
 
-    //            const unFollowingUserFollowing = updatedUsers[unFollowingUserIndex].following.filter(followingUser => {
-    //             return followingUser !== updatedUsers[userToUnfollowIndex].username;
+               const unFollowingUserFollowing = updatedUsers[unFollowingUserIndex].following.filter(followingUser => {
+                return followingUser !== updatedUsers[userToUnfollowIndex].username;
 
-    //            });
-    //            updatedUsers[unFollowingUserIndex].following = unFollowingUserFollowing;
+               });
+               updatedUsers[unFollowingUserIndex].following = unFollowingUserFollowing;
+
+               state.users = updatedUsers;
             }
      }
+    }
 });
 
 export const {editUser, addNewUser, followUser, unFollowUser} = usersSlice.actions;
