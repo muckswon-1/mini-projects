@@ -1,6 +1,8 @@
 import {v4 as uuidv4} from 'uuid';
 import { formatTimestamp } from './src/utils/utils';
-const PASSWORD = import.meta.env.VITE_PASSWORD
+const PASSWORD = import.meta.env.VITE_PASSWORD;
+
+console.log(PASSWORD);
 
 export const POSTS = [
     {
