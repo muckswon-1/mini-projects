@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Post from './Post'
 
-function PostList({ posts, showDeleteOption }) {
+function PostList({ posts, showDeleteOption, showFollowUnfollowButton }) {
   const [openPostId, setOpenPostId] = useState(null);
 
   const handleToggleRead = (postId) => {
@@ -18,7 +18,7 @@ function PostList({ posts, showDeleteOption }) {
               post={post}
               isOpen={openPostId === post.id}
               onToggleRead={handleToggleRead}
-           
+              showFollowUnfollowButton = {showFollowUnfollowButton}
             />
           </div>
         ))

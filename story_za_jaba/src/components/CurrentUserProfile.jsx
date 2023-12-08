@@ -23,7 +23,7 @@ function CurrentUserProfile() {
     setUser(allUsers.filter((aUser) => aUser.username === currentUser.username)[0]);
   },[user,currentUser]);
 
-  console.log(user);
+
 
   return (
     
@@ -31,7 +31,7 @@ function CurrentUserProfile() {
       <div className="flex items-center mb-4">
         <div className="w-16 h-16 overflow-hidden bg-gray-300 rounded-full mr-4">
           
-          <ProfileImage user={user} />
+          <ProfileImage image={currentUser.profilePic} />
         </div>
         <div>
           <h2 className="text-xl font-bold">{user.username}</h2>

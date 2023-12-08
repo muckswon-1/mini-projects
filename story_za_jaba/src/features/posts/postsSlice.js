@@ -85,22 +85,7 @@ export const postsSlice = createSlice({
             // state.posts = otherPosts;
 
         },
-        commentOnPost : (state,action) =>{
-            const comment = action.payload;
-             const commentedPostIndex = state.posts.findIndex(aPost => {
-                 return aPost.id === comment.postId;
-            });
-
-            console.log(commentedPostIndex);
-
-            if(commentedPostIndex !== -1){
-                const commentedPost = {...state.posts[commentedPostIndex]};
-                commentedPost.comments.push(comment);
-                state.posts[commentedPostIndex] = commentedPost;
-               
-            }
-
-        },
+      
         editPostUsername : (state,action)=>{
 
             const user = action.payload
@@ -118,28 +103,11 @@ export const postsSlice = createSlice({
             state.posts = state.posts.filter((aPost) => aPost.id !== postToDeleteId);
 
         },
-        addReplyOnComment : (state,action) => {
-            const {comment} = action.payload;
-            const commentedPostIndex = state.posts.findIndex((aPost) => aPost.id = comment.postId);
-            
-
-            if(commentedPostIndex !== -1){
-                const updatedPosts = [...state.posts];
-                const foundPost = updatedPosts[commentedPostIndex];
-                const repliedCommentIndex = foundPost.comments.findIndex((aComment) => aComment.id === comment.id);
-
-                if(repliedCommentIndex !== -1){
-                    const updatedComments = [...foundPost.comments];
-
-                    updatedComments[repliedCommentIndex].push(comment);
-                }
-            }
-            
-        }
+        
     }
 })
 
-export const {addPost, likePost, dislikePost, commentOnPost, editPostUsername, deletePost, addReplyOnComment} = postsSlice.actions;
+export const {addPost, likePost, dislikePost, editPostUsername, deletePost, addReplyOnComment} = postsSlice.actions;
 export const selectPosts = state => state.posts.posts;
 
 export default postsSlice.reducer;

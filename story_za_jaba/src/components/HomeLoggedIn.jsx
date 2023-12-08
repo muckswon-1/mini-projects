@@ -36,7 +36,7 @@ function HomeLoggedIn({users}) {
       </div>
 
           <h2 className="text-2xl font-bold mb-4 text-center">Top Posts</h2>
-          <PostList users={users} posts={posts} />
+          <PostList users={users} posts={posts} showFollowUnfollowButton={true} />
   
     </div>
   );

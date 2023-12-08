@@ -13,8 +13,6 @@ function EditProfileForm() {
   
 
 
-
-
   const [editedProfile, setEditedProfile] = useState({
     username: user.username || '',
     email: user.email || '',

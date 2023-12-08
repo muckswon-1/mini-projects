@@ -76,7 +76,7 @@ function UserProfile({currentUser}) {
     
 
       {/* User Posts */}
-      <PostList posts={userPosts}/>
+      <PostList posts={userPosts} showFolowUnfollowButton={false}/>
     </div>
   )
 }

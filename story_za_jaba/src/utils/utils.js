@@ -65,9 +65,10 @@ export const createPostFromObject = (postObject) => {
     title = '',
     content = '',
     timePosted = formatTimestamp(new Date().toISOString()),
+    parentId = null,
     likes = [],
     dislikes = [],
-    comments = [],
+    replies = [],
   } = postObject;
 
   return {
@@ -79,7 +80,8 @@ export const createPostFromObject = (postObject) => {
     timePosted,
     likes,
     dislikes,
-    comments,
+    replies,
+    parentId
   };
 };
 

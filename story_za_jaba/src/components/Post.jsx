@@ -1,29 +1,66 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { ChatDotsFill, HandThumbsDownFill, HandThumbsUpFill, Trash } from 'react-bootstrap-icons';
-import { useDispatch, useSelector} from 'react-redux';
 import { dislikePost, likePost, deletePost } from '../features/posts/postsSlice';
-
-import CreateComment from './CreateComment';
-import DisplayComment from './DisplayComment';
-import { Link, } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { selectCurrentUser } from '../features/profile/profileSlice';
+import { selectComments } from '../features/comments/commentSlice';
+import Comments from './Comments';
+import { findUserById } from '../utils/utils';
+import { followUser, selectUsers, unFollowUser } from '../features/users/usersSlice';
 
 
-
-function Post({ post, isOpen, onToggleRead,showDeleteOption }) {
-
+function Post({ post, isOpen, onToggleRead, showDeleteOption, showFollowUnfollowButton }) {
   const dispatch = useDispatch();
   const [showComments, setShowComments] = useState(false);
   const currentUser = useSelector(selectCurrentUser);
+  const allComments = useSelector(selectComments);
+  const allUsers = useSelector(selectUsers)
+  const [postComments, setPostComments] = useState([...allComments.filter((aComment) => aComment.postId === post.id)]);
+  const user = findUserById(allUsers,post.userId);
+  const checkIfFollwing = user.followers.includes(currentUser.username)
+  const [isFollowing, setIsFollowing] = useState(checkIfFollwing);
 
+ 
+  useEffect(() => {
+    const filterComments = allComments.filter((aComment) => aComment.postId === post.id);
+    setPostComments([...filterComments]);
+  }, [showComments, allComments, post.id]);
+
+
+  useEffect(() => {
+
+    const flag = user.followers.includes(currentUser.username);
+    setIsFollowing(flag)
+  },[user, currentUser])
+
+
+      const onToggleFollow = () => {
+        if( user && isFollowing) {
+            dispatch(unFollowUser({userToUnfollow : user.username,unFollowingUser : currentUser.username}))
+            console.log('just unfollowed. ');
+           
+        }else {
+            
+            dispatch(followUser({userToFollow : user.username, followingUser : currentUser.username}));
+            console.log('now following')
+        }
+        setIsFollowing((prevFlag) => !prevFlag);
+    }
 
 
   return (
     <div className="mx-auto w-full bg-white p-4 rounded-md shadow-md mb-4">
       <div className="mb-4">
-        <Link to={currentUser.username === post.username ? `profile/${post.username}` : `users/profile/${post.username}`}>
+        <div className='flex justify-between'>
+          <Link to={currentUser.username === post.username ? `profile/${post.username}` : `users/profile/${post.username}`}>
           <h3 className="text-gray-700">{post.username}</h3>
         </Link>
+        {
+          showFollowUnfollowButton && post.userId !== currentUser.id && <button onClick={onToggleFollow} className={!isFollowing ? "text-blue-400 font-normal hover:underline" : "text-red-400 font-normal hover:underline"}>{isFollowing ? 'Unfollow' : 'Follow'}</button>
+        
+        }
+        </div>
         <h2 className="text-xl font-bold">{post.title}</h2>
       </div>
       {isOpen ? (
@@ -49,7 +86,7 @@ function Post({ post, isOpen, onToggleRead,showDeleteOption }) {
           <span className="mr-1">
             <ChatDotsFill />
           </span>
-          {post.comments.length}
+          {postComments.length}
         </button>
         <div className="flex items-center">
           <button
@@ -59,9 +96,9 @@ function Post({ post, isOpen, onToggleRead,showDeleteOption }) {
             <span className="mr-1">
               <HandThumbsUpFill />
             </span>
-            {post.likes.length - post.dislikes.length}
+            {0}
           </button>
-          <button 
+          <button
             onClick={() => dispatch(dislikePost(post))}
             className="flex items-center text-blue-500 mr-2"
           >
@@ -81,22 +118,9 @@ function Post({ post, isOpen, onToggleRead,showDeleteOption }) {
           )}
         </div>
       </div>
-      {showComments && (
-        <div className="mt-4 bg-gray-100 p-4 rounded-md">
-          <CreateComment post={post} />
-          {post.comments.length > 0 ? (
-            post.comments.map((aComment) => (
-              <DisplayComment key={aComment.id} comment={aComment}>
-                <CreateComment post={post} parentComment={aComment}/>
-              </DisplayComment>
-            ))
-          ) : (
-            <p>This post has no comments.</p>
-          )}
-        </div>
-      )}
+      {showComments && <Comments comments={postComments} postId={post.id}/>}
     </div>
   );
 }
 
-export default Post
+export default Post;

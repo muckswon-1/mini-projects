@@ -1,13 +1,13 @@
 
 import './App.css'
-import { Navigate, Route, BrowserRouter as Router, Routes, useParams } from 'react-router-dom'
+import { Navigate, Route, BrowserRouter as Router, Routes} from 'react-router-dom'
 import Header from './components/Header'
 import { useSelector } from 'react-redux'
 import { selectCurrentUser, selectIsAuthenticated } from './features/profile/profileSlice'
 import HomeLoggedIn from './components/HomeLoggedIn'
 import Login from './components/Login'
 import Register from './components/Register'
-import NotFound from './components/NotFound'
+import ErrorBoundary from './components/ErrorBoundary'
 
 import CreatePost from './components/CreatePost'
 import EditProfileForm from './components/EditProfile'
@@ -17,21 +17,17 @@ import CurrentUserProfile from './components/CurrentUserProfile'
 import UserProfile from './components/UserProfile'
 
 
-
 function App() {
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const allUsers = useSelector(selectUsers);
   const [users, setUsers] = useState(allUsers);
  
   const currentUser = useSelector(selectCurrentUser);
-
-   
- 
  
   
   return (
     <>
-    <Router>
+     <Router>
       <Header/>
       <Routes>
          <Route
@@ -55,11 +51,13 @@ function App() {
 
         
 
-          <Route path="*" element={<NotFound />} />
+          <Route path="*" element={<ErrorBoundary />} />
       </Routes>
 
      
     </Router>
+
+   
     </>
   )
 }

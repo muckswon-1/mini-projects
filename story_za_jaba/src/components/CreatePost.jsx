@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Post from './Post';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCurrentUser, selectIsAuthenticated } from '../features/profile/profileSlice';
 import { createPostFromObject } from '../utils/utils';
@@ -39,9 +38,7 @@ const CreatePost = () => {
 
    
     dispatch(addPost(makePostReady));
-
-
-    // Redirect to the home page or wherever you want after submission
+    // Redirect to the home page 
       navigate('/');
   };
 
